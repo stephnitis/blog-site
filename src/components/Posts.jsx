@@ -8,9 +8,13 @@ import CardContent from '@mui/material/CardContent';
 // import Button from '@mui/material/Button';
 
 
+// styling to limit displayed length of blogpost ...readmore functionality
+// infinite scroll / pagination implementation
+// click to display full article / comments
+
 const Posts = (props) => {
 
-  console.log('props ----->', props);
+  // console.log('props ----->', props);
 
 
   return (

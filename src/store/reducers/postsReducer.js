@@ -18,7 +18,7 @@ let initialState = {
 
 function postsReducer(state = initialState, action) {
 
-  console.log('state from reducer ------>', state)
+  // console.log('state from reducer ------>', state)
 
   const { type } = action;
 
@@ -46,3 +46,6 @@ export const allPosts = (posts) => {
 }
 
 export default postsReducer;
+
+// need function to add comments to initial state array
+// need to link posts reducer to comment reducer
