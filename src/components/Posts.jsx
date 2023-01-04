@@ -1,5 +1,12 @@
 import { connect } from 'react-redux';
 
+import Stack from '@mui/material/Stack';
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+// import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+// import Button from '@mui/material/Button';
+
 
 const Posts = (props) => {
 
@@ -8,15 +15,17 @@ const Posts = (props) => {
 
   return (
     <>
-      <div className="posts-container">
+      <Stack spacing={3}>
         {props.allPosts.map((post, index) => (
-          <div key={`post-${index}`}>
-            <h1>{post.title}</h1>
-            <h2>{post.author}</h2>
-            <p>{post.content}</p>
-          </div>
+          <Card key={`post-${index}`} className="posts-container">
+            <CardContent >
+              <Typography variant="h2">{post.title}</Typography>
+              <Typography variant="h3" color="text.secondary">{post.author}</Typography>
+              <Typography variant="body">{post.content}</Typography>
+            </CardContent>
+          </Card>
         ))}
-      </div>
+      </Stack>
     </>
   )
 }
