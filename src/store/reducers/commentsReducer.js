@@ -34,7 +34,7 @@ let initialState = {
 
 function commentsReducer(state = initialState, action) {
 
-  console.log('state from comments reducer ----->', state);
+  // console.log('state from comments reducer ----->', state);
 
   const { type } = action;
 
@@ -45,8 +45,13 @@ function commentsReducer(state = initialState, action) {
         comments: state,
       }
 
-      case 'reset':
-        return initialState;
+    case 'access-children':
+      return {
+        
+      }
+
+    case 'reset':
+      return initialState;
 
 
     default:

@@ -1,21 +1,28 @@
-import { connect } from 'react-redux';
-
+import NestedComments from './NestedComments';
+import { useContext } from "react";
+import { SettingsContext } from '../context/settings'
 // form to add comments
 // button to delete comments
 
-const Comments = (props) => {
-  console.log('comments props ----->', props)
 
-  // const nestedComments = (comment.children || []).map(comment => {
-  //   return <Comment key={comment.id} comment={comment} type="child" />
-  // })
+const Comments = ({ children }) => {
+
+  const {commentData} = useContext(SettingsContext);
+  console.log('comments props ----->', commentData)
 
   return (
     <>
     <div>
+          {
+            commentData.map((comment) => {
+              return (
+                <NestedComments key={comment.id} comment={comment} />
+              )
+            })
+          }
 
     </div>
-      <div>
+      {/* <div>
         {props.allComments.map((comment, index) => (
           <div key={`comment-${index}`} className="comment-container">
             <p>{comment.text}</p>
@@ -27,19 +34,9 @@ const Comments = (props) => {
             ))}
           </div>
         ))}
-      </div>
+      </div> */}
     </>
   )
 }
 
-const mapStateToProps = ({ commentsReducer }) => {
-  return {
-    allComments: commentsReducer.commentData
-  }
-}
-
-const mapDispatchToProps = {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Comments);
+export default Comments;

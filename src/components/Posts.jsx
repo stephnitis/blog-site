@@ -1,4 +1,5 @@
-import { connect } from 'react-redux';
+import { useContext } from 'react';
+import { SettingsContext } from '../context/settings'
 
 import Stack from '@mui/material/Stack';
 import Card from '@mui/material/Card';
@@ -14,13 +15,15 @@ import CardContent from '@mui/material/CardContent';
 
 const Posts = (props) => {
 
+  const { blogPosts } = useContext(SettingsContext);
+
   // console.log('props ----->', props);
 
 
   return (
     <>
       <Stack spacing={3}>
-        {props.allPosts.map((post, index) => (
+        {blogPosts.map((post, index) => (
           <Card key={`post-${index}`} className="posts-container">
             <CardContent >
               <Typography variant="h2">{post.title}</Typography>
@@ -34,14 +37,4 @@ const Posts = (props) => {
   )
 }
 
-const mapStateToProps = ({ postsReducer }) => {
-  return {
-    allPosts: postsReducer.blogPosts
-  }
-}
-
-const mapDispatchToProps = {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default Posts;
