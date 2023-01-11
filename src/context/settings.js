@@ -51,25 +51,25 @@ const blogPosts = [
 
 const SettingsProvider = ({ children }) => {
 
-  // const [nestedComments, setNestedComments] = useState([]);
+  const [nestedComments, setNestedComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
 
   const handleShowComments = () => {
     setShowComments(true);
   }
 
-
-  // accesses first layer of nested comments
-  commentData.map((comment) => {
-    const childComments = [];
-    if (comment.children){
-      console.log('comment.children', comment.children)
-      childComments.push(comment.children)
-    }
-    console.log('comment from map', comment)
-    console.log('childComments array', childComments)
-    return {...comment}
-  })
+  function getNestedComments(array){
+    array.map((comment) => {
+      const childComments = [];
+      if (comment.children){
+        childComments.push(comment.children)
+      }
+      console.log('childComments array', childComments)
+      return {...comment}
+    })
+  }
+  
+  getNestedComments(commentData)
 
   const values = {
     commentData,
