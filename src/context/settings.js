@@ -1,3 +1,5 @@
+import { createUnarySpacing } from '@mui/system';
+import { chainPropTypes } from '@mui/utils';
 import React from 'react';
 import { useState, useEffect } from 'react';
 
@@ -48,30 +50,31 @@ const blogPosts = [
 ]
 
 const SettingsProvider = ({ children }) => {
-  
-  const [index, setIndex] = useState({})
-  const [nestedComments, setNestedComments] = useState([]);
+
+  // const [nestedComments, setNestedComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
 
-  const  handleShowComments = () => {
+  const handleShowComments = () => {
     setShowComments(true);
   }
 
-    // utilize square brackets with index
-  function getEachComment(object) {
-    let comments;
-    object.map(comment => {
-      return comments = {...comment}
-    })
-    console.log('--------->', comments);
-  }
 
-  getEachComment(commentData)
+  // accesses first layer of nested comments
+  commentData.map((comment) => {
+    const childComments = [];
+    if (comment.children){
+      console.log('comment.children', comment.children)
+      childComments.push(comment.children)
+    }
+    console.log('comment from map', comment)
+    console.log('childComments array', childComments)
+    return {...comment}
+  })
 
   const values = {
     commentData,
     blogPosts,
-    nestedComments,
+    // nestedComments,
     handleShowComments,
     showComments,
   }

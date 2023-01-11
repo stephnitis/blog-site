@@ -8,7 +8,7 @@ import { SettingsContext } from '../context/settings'
 const Comments = ({ children }) => {
 
   const {commentData} = useContext(SettingsContext);
-  console.log('comments props ----->', commentData)
+  // console.log('comments props ----->', commentData)
 
   return (
     <>

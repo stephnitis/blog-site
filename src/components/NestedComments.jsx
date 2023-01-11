@@ -5,14 +5,14 @@ const NestedComments = ({ children }) => {
 
   const {commentData} = useContext(SettingsContext);
 
-  console.log('nested commentData ----->', commentData);
-  console.log('children ------>', commentData.children);
+  // console.log('nested commentData ----->', commentData);
+  // console.log('children ------>', commentData.children);
 
   const nestedComments = (commentData.children || []).map(comment => {
     return <NestedComments key={comment.id} comment={comment} type="child" />
   })
 
-  console.log('nested comments ----->', nestedComments);
+  // console.log('nested comments ----->', nestedComments);
 
   return (
     <div style={{"marginLeft": "25px", "marginTop": "10px"}}>
