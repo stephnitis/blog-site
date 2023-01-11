@@ -1,5 +1,4 @@
-import { createUnarySpacing } from '@mui/system';
-import { chainPropTypes } from '@mui/utils';
+
 import React from 'react';
 import { useState, useEffect } from 'react';
 
@@ -52,19 +51,8 @@ const blogPosts = [
 const SettingsProvider = ({ children }) => {
 
   const [nestedComments, setNestedComments] = useState([]);
+  const [clickedIndex, setClickedIndex] = useState({});
   const [showComments, setShowComments] = useState(false);
-
-  // function getNestedComments(array){
-  //   array.map((comment) => {
-  //     // const childComments = [];
-  //     if (comment.children){
-  //       // childComments.push(comment.children)
-  //       setNestedComments([comment.children])
-  //     }
-  //     console.log('nested children ---->', nestedComments)
-  //     return {...comment}
-  //   })
-  // }
 
   function getNestedComments(array){
     array.map((comment, index) => {
@@ -73,19 +61,23 @@ const SettingsProvider = ({ children }) => {
       return {...comment}
     })
   }
-  console.log('nested children ---->', nestedComments)
-  // function handleExpandComments(array, callback){
-    
-  // }
-  // getNestedComments(commentData)
 
   function handleShowComments(){
     if(showComments){
       setShowComments(false);
     } else {
-      setShowComments(true)
+      setShowComments(true);
     }
   }
+
+  const handleClick = (index => (e) => {
+    e.preventDefault();
+    console.log(index)
+    setClickedIndex(state => ({
+      ...state,
+      [index]: !state[index]
+    }))
+  })
 
   const values = {
     commentData,
@@ -94,6 +86,8 @@ const SettingsProvider = ({ children }) => {
     handleShowComments,
     getNestedComments,
     showComments,
+    clickedIndex,
+    handleClick,
   }
 
   return (
