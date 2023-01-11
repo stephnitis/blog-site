@@ -55,7 +55,7 @@ const SettingsProvider = ({ children }) => {
   const [showComments, setShowComments] = useState(false);
 
   function getNestedComments(array){
-    array.map((comment, index) => {
+    array.map((comment) => {
       setNestedComments([comment])
       setShowComments(true);
       return {...comment}
