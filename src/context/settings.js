@@ -58,24 +58,37 @@ const SettingsProvider = ({ children }) => {
     setShowComments(true);
   }
 
+  // function getNestedComments(array){
+  //   array.map((comment) => {
+  //     // const childComments = [];
+  //     if (comment.children){
+  //       // childComments.push(comment.children)
+  //       setNestedComments([comment.children])
+  //     }
+  //     console.log('nested children ---->', nestedComments)
+  //     return {...comment}
+  //   })
+  // }
+
   function getNestedComments(array){
-    array.map((comment) => {
-      const childComments = [];
-      if (comment.children){
-        childComments.push(comment.children)
-      }
-      console.log('childComments array', childComments)
+    array.map((comment, index) => {
+      setNestedComments([comment])
+      setShowComments(true);
       return {...comment}
     })
   }
-  
-  getNestedComments(commentData)
+  console.log('nested children ---->', nestedComments)
+  // function handleExpandComments(array, callback){
+    
+  // }
+  // getNestedComments(commentData)
 
   const values = {
     commentData,
     blogPosts,
-    // nestedComments,
+    nestedComments,
     handleShowComments,
+    getNestedComments,
     showComments,
   }
 
