@@ -16,13 +16,13 @@ const Comments = ({ children }) => {
       {commentData.map((comment, index) => (
         <div key={`comment-${index}`}>
           <h1>{comment.text}</h1>
-          <button onClick={() => getNestedComments(comment.children)}>show more comments</button>
+          
           {showComments ? <div>{ nestedComments.map((nestedComment, index) => (
             <div key={`nested-${index}`}>
               <p>{nestedComment.text}</p>
             </div>
             
-          ))} </div> : 'No Additional Comments'}
+          ))} </div> : <button onClick={() => getNestedComments(comment.children)}>show more comments</button>}
         </div>
       ))}
     </div>
