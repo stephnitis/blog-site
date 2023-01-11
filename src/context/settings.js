@@ -54,10 +54,6 @@ const SettingsProvider = ({ children }) => {
   const [nestedComments, setNestedComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
 
-  const handleShowComments = () => {
-    setShowComments(true);
-  }
-
   // function getNestedComments(array){
   //   array.map((comment) => {
   //     // const childComments = [];
@@ -82,6 +78,14 @@ const SettingsProvider = ({ children }) => {
     
   // }
   // getNestedComments(commentData)
+
+  function handleShowComments(){
+    if(showComments){
+      setShowComments(false);
+    } else {
+      setShowComments(true)
+    }
+  }
 
   const values = {
     commentData,

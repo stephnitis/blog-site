@@ -7,7 +7,7 @@ import { SettingsContext } from '../context/settings'
 
 const Comments = ({ children }) => {
 
-  const { commentData, getNestedComments, showComments, nestedComments } = useContext(SettingsContext);
+  const { commentData, getNestedComments, showComments, nestedComments, handleShowComments } = useContext(SettingsContext);
   // console.log('comments props ----->', commentData)
 
   return (
@@ -20,6 +20,7 @@ const Comments = ({ children }) => {
           {showComments ? <div>{ nestedComments.map((nestedComment, index) => (
             <div key={`nested-${index}`}>
               <p>{nestedComment.text}</p>
+              <button onClick={() => handleShowComments()}>hide comments</button>
             </div>
             
           ))} </div> : <button onClick={() => getNestedComments(comment.children)}>show more comments</button>}
